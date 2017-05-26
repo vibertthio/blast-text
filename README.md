@@ -19,6 +19,8 @@ cd ..
 
 ## Usage
 
+** Tou have to add the .mov file back to p5 by yourself, because I can't upload file of that size to github **
+
 ```
 npm run start
 processing-java --sketch=<current directory>/p5-example --run
