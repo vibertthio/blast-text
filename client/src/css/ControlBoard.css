@@ -1,22 +1,19 @@
 body {
   margin: auto;
-  width: 50%;
+  /*width: 50%;*/
   padding: 1em;
   font-family: sans-serif;
 }
 
-.btn {
-  background-color: Transparent;
-  background-repeat:no-repeat;
-  border: none;
-  outline:none;
+
+.radio-list {
+  display:inline;
 }
 
-.radial-label {
+.radio-btn {
+  width: 10%;
 }
 
-.radial-list {
-  /*display:inline;*/
-  display:flex;
-  list-style:none;
+.logo-btn {
+  margin-top: 1em;
 }

@@ -4,12 +4,19 @@
   "description": "store the user's comment in .txt file on server.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "PORT=3001 node index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "PORT=3001 node index.js",
+    "client": "cd client && npm run start"
   },
   "author": "Vibert Thio",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "osc": "^2.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.4.0"
   }
 }

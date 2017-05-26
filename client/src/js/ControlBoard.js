@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Checkbox from 'material-ui/Checkbox';
+import RaisedButton from 'material-ui/RaisedButton';
 import Visibility from 'material-ui/svg-icons/action/visibility';
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 import './../css/ControlBoard.css';
-import Radial from './Radial';
+import Radio from './Radio';
+import TextInput from './TextInput';
 
 // Tap event for mobile
 injectTapEventPlugin();
@@ -23,6 +25,7 @@ class ControlBoard extends Component {
       textEffectIndex: 0,
       backgroundIndex: 0,
       showingLogo: false,
+      texts: ['', '', '', '', ''],
     };
   }
 
@@ -49,6 +52,40 @@ class ControlBoard extends Component {
     this.setState({ showingLogo: !this.state.showingLogo });
   }
 
+
+  /**
+   * [handleEditText description]
+   * @param  {[type]} id   [description]
+   * @param  {[type]} text [description]
+   */
+  handleEditText(id, text) {
+    const texts = this.state.texts;
+    texts[id] = text;
+    this.setState({
+      texts,
+    });
+  }
+
+  /**
+   * [handleSendText description]
+   * @param  {int} index [description]
+   */
+  handleSendText(index) {
+    console.log(this.state.texts);
+    const texts = this.state.texts;
+    fetch(`/api/text/${index}`, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        texts,
+      }),
+    })
+    .then(comment => console.log(comment));
+  }
+
   /**
    * [render description]
    * @return {Element} [description]
@@ -56,18 +93,17 @@ class ControlBoard extends Component {
   render() {
     return (
       <div>
-
-        <Radial
+        <Radio
           label="Text Effect"
-          radialIndex={this.state.textEffectIndex}
-          radialNumber={3}
+          radioIndex={this.state.textEffectIndex}
+          radioNumber={3}
           handleClick={index => this.selectTextEffect(index)}
         />
 
-        <Radial
+        <Radio
           label="Background"
-          radialIndex={this.state.backgroundIndex}
-          radialNumber={3}
+          radioIndex={this.state.backgroundIndex}
+          radioNumber={3}
           handleClick={index => this.selectBackground(index)}
         />
 
@@ -78,6 +114,22 @@ class ControlBoard extends Component {
           checked={this.state.showingLogo}
           onTouchTap={() => this.triggerLogo()}
         />
+
+        <RaisedButton
+          className="logo-btn"
+          label="change logo"
+          primary
+          disabled={!this.state.showingLogo}
+        />
+
+        {this.state.texts.map((text, index) => (
+          <TextInput
+            key={index.toString()}
+            text={text}
+            handleEditText={t => this.handleEditText(index, t)}
+            handleSend={() => this.handleSendText(index)}
+          />
+        ))}
 
       </div>
     );
