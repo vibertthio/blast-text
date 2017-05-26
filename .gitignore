@@ -1,0 +1,10 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# dependencies
+/node_modules
+
+# p5 build files
+/outputs/build/
