@@ -12,8 +12,8 @@ function Radio(props) {
   const list = Array(props.radioNumber).fill().map((x, i) => i);
 
   return (
-    <div className="radial">
-      <p className="radial-label">{props.label}</p>
+    <div className="radio">
+      <p className="radio-label">{props.label}</p>
       <RadioButtonGroup
         className="radio-list"
         name="Text Effect"

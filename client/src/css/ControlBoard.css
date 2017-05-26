@@ -1,19 +1,67 @@
 body {
   margin: auto;
   /*width: 50%;*/
-  padding: 1em;
   font-family: sans-serif;
 }
 
-
-.radio-list {
-  display:inline;
+.banner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-image: url('./../imgs/logo.jpg');
+  background-size: auto 200px;
 }
 
-.radio-btn {
-  width: 10%;
+.mask {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  width: 100%;
+  height: 10px;
+
+  border: 3px solid #A00;
+
+}
+
+.container {
+  margin: auto;
+  position: relative;
+  width: 90%;
+  vertical-align: middle;
+}
+
+.col {
+  float: left;
+  width: 300px;
+  height: 600px;
+  margin: 1em;
+
+  padding: 1em;
+  border: 0.5px solid #ddd;
+
+}
+
+.radio-label {
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.logo-label {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-size: 2em;
+}
+
+.radio-list {
+  margin-bottom: 1em;
 }
 
 .logo-btn {
   margin-top: 1em;
+}
+
+.devider {
+  opacity: 0.6;
 }
