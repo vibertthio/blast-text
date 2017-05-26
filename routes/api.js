@@ -11,8 +11,9 @@ router.get('/', (req, res) => {
   fs.readFile('./default.txt', 'utf8', (err, d) => {
     if (err) throw err;
     console.log(d);
-    const lines = d.split('\n');
-    lines.splice(-1, 1); // remove the last blank space
+    const lines = d.split('\n').splice(0, 5);
+    // const lines = d.split('\n');
+    // lines.splice(-1, 1); // remove the last blank space
     data = lines;
     res.json(lines);
   });
