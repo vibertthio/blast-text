@@ -10,6 +10,7 @@ There is an example code of processing, receiving OSC message on localhost with 
 
 ```
 git clone https://github.com/vibertthio/blast-text.git
+cd [the folder of the project]
 npm install
 cd client
 npm install
@@ -19,7 +20,7 @@ cd ..
 
 ## Usage
 
-** Tou have to add the .mov file back to p5 by yourself, because I can't upload file of that size to github **
+**Tou have to add the .mov file back to p5 by yourself, because I can't upload file of that size to github**
 
 ```
 npm run start
