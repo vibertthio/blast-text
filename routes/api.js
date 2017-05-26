@@ -1,8 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
 const fs = require('fs');
-
+const sendosc = require('./sendosc.js');
+const port = sendosc.port;
 
 
 let data = ['', '', '', '', ''];
@@ -30,6 +30,13 @@ ${texts[4]}
     if (e) throw e;
     console.log('It\'s saved!');
     try {
+      const msg = {
+        address: "/gotit",
+        args: [{
+          type: 'f',
+          value: 1,
+        }]
+      };
       port.send(msg);
     } catch(e) {
       console.log(e.message, e.name);

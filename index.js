@@ -8,10 +8,6 @@ const bodyParser = require('body-parser');
 
 
 
-const sendosc = require('./sendosc.js');
-const port = sendosc.port;
-const msg = sendosc.msg;
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.static(path.join(__dirname, 'client/build')));
