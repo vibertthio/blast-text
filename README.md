@@ -4,6 +4,8 @@ If there is no node_modules in the current folder,
 use npm to install the dependencies.
 There is an example code of processing, receiving OSC message on localhost with port 12000.
 
+![alt tag](https://github.com/vibertthio/blast-text/blob/master/demo.png)
+
 ## Installation
 
 ```
