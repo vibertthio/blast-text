@@ -9,7 +9,7 @@ There is an example code of processing, receiving OSC message on localhost with 
 ## Installation
 
 ```
-git clone https://github.com/vibertthio/blast-text
+git clone https://github.com/vibertthio/blast-text.git
 npm install
 cd client
 npm install
