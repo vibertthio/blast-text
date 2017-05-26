@@ -4,6 +4,7 @@ Icon?
 ._*
 
 # dependencies
+npm-debug.log*
 /node_modules
 
 # p5 build files
