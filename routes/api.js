@@ -19,40 +19,6 @@ router.get('/', (req, res) => {
   });
 
 });
-router.post('/logo/close', (req, res) => {
-  try {
-    const msg = {
-      address: "/logo",
-      args: [{
-        type: 'f',
-        value: 0,
-      }]
-    };
-    port.send(msg);
-  } catch(e) {
-    console.log(e.message, e.name);
-  }
-  res.send({
-    msg: 'logo closed',
-  });
-});
-router.post('/logo/open', (req, res) => {
-  try {
-    const msg = {
-      address: "/logo",
-      args: [{
-        type: 'f',
-        value: 1,
-      }]
-    };
-    port.send(msg);
-  } catch(e) {
-    console.log(e.message, e.name);
-  }
-  res.send({
-    msg: 'logo opened',
-  });
-});
 router.post('/logo/change', (req, res) => {
   try {
     const msg = {
@@ -68,6 +34,60 @@ router.post('/logo/change', (req, res) => {
   }
   res.send({
     msg: 'logo changed',
+  });
+});
+router.post('/logo/:state', (req, res) => {
+  const s = (req.params.state == 'open' ? true : false);
+  try {
+    const msg = {
+      address: "/logo",
+      args: [{
+        type: 'f',
+        value: (s ? 1 : 0),
+      }]
+    };
+    port.send(msg);
+  } catch(e) {
+    console.log(e.message, e.name);
+  }
+  res.send({
+    msg: s ? 'logo opened' : 'logo closed',
+  });
+});
+router.post('/auto/speed/:value', (req, res) => {
+  const value = parseInt(req.params.value, 10);
+  try {
+    const msg = {
+      address: "/speed",
+      args: [{
+        type: 'f',
+        value: value,
+      }]
+    };
+    port.send(msg);
+  } catch(e) {
+    console.log(e.message, e.name);
+  }
+  res.send({
+    msg: `speed change to ${value}`,
+  });
+});
+router.post('/auto/:state', (req, res) => {
+  const s = (req.params.state == 'open' ? true : false);
+  try {
+    const msg = {
+      address: "/auto",
+      args: [{
+        type: 'f',
+        value: (s ? 1 : 0),
+      }]
+    };
+    port.send(msg);
+  } catch(e) {
+    console.log(e.message, e.name);
+  }
+  res.send({
+    msg: s ? 'auto opened' : 'auto closed',
   });
 });
 router.post('/effect/:index', (req, res) => {
@@ -106,6 +126,56 @@ router.post('/bg/:index', (req, res) => {
   });
 });
 
+router.post('/color', (req , res) => {
+  const rgb = req.body.rgb;
+  try {
+    const msg = {
+      address: "/rgba",
+      args: [
+        {
+          type: 'f',
+          value: rgb.r,
+        },
+        {
+          type: 'f',
+          value: rgb.g,
+        },
+        {
+          type: 'f',
+          value: rgb.b,
+        },
+        {
+          type: 'f',
+          value: rgb.a,
+        },
+      ]
+    };
+    port.send(msg);
+  } catch(e) {
+    console.log(e.message, e.name);
+  }
+  res.send({
+    msg: 'color changed',
+  });
+});
+router.post('/size/:value',  (req , res) => {
+  const value = parseInt(req.params.value, 10);
+  try {
+    const msg = {
+      address: "/size",
+      args: [{
+        type: 'f',
+        value: value,
+      }]
+    };
+    port.send(msg);
+  } catch(e) {
+    console.log(e.message, e.name);
+  }
+  res.send({
+    msg: `size changed to ${value}`,
+  });
+})
 router.post('/text/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
   console.log(id);
