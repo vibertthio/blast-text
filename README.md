@@ -35,6 +35,12 @@ openbrower http://localhost:3001
 4.   "/effect [index]" for change of text effect to the index (index is 0~2)
 5.   "/bg [index]" for change of background to the index (index is 0~2)
 6.   "/text [index]" for sending of text (index is 0~4)
+7.   "/auto 0" for close auto play texts
+8.   "/auto 1" for open auto play texts
+9.   "/speed [value]" value (0 ~ 1000) for the speed of auto play
+10.   "/rgba [r] [g] [b] [a]"  r(0 ~ 255), g(0 ~ 255), b(0 ~ 255), a(0 ~ 1) for the color of text display
+11.   "/size [value]" value (0 ~ 1000) for the size of text display
+
 
 You can find the definition in the file ./routes/api.js .
 
