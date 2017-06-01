@@ -5,7 +5,9 @@
   "dependencies": {
     "material-ui": "^0.18.1",
     "prop-types": "^15.5.10",
+    "rc-slider": "^8.0.0",
     "react": "^15.5.4",
+    "react-color": "^2.12.0",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1"
   },
